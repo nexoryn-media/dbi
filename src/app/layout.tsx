@@ -15,11 +15,16 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const theme = resolveTheme(tenant.theme as Record<string, unknown>);
   const faviconUrl = theme.faviconUrl || theme.logoUrl;
+  const tenantFaviconUrl = faviconUrl
+    ? `/favicon.ico?v=${encodeURIComponent(faviconUrl)}`
+    : undefined;
 
   return {
     title: tenant.pageTitle || "Dashboard",
     description: tenant.metaDescription || "",
-    icons: faviconUrl ? { icon: faviconUrl, shortcut: faviconUrl, apple: faviconUrl } : undefined,
+    icons: tenantFaviconUrl
+      ? { icon: tenantFaviconUrl, shortcut: tenantFaviconUrl, apple: tenantFaviconUrl }
+      : undefined,
   };
 }
 
