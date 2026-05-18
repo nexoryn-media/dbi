@@ -92,10 +92,10 @@ export default function SettingsPage() {
 
     try {
       const currentTheme = (tenant.theme || {}) as any;
+      const { faviconUrl: _faviconUrl, ...themeWithoutDerivedFavicon } = currentTheme;
       const updatedTheme = {
-        ...currentTheme,
+        ...themeWithoutDerivedFavicon,
         logoUrl: formData.logoUrl,
-        faviconUrl: formData.logoUrl,
         brandName: formData.sidebarTitle,
         logoSize: formData.logoSize,
         radiusCard: formData.radiusCard,
@@ -505,11 +505,16 @@ export default function SettingsPage() {
       <div className={styles.section} style={{ marginTop: '48px' }}>
         <h2 className={styles.sectionTitle}>Configuration Snapshot (JSON)</h2>
         <div className={styles.codeBlock}>
-          <pre>{JSON.stringify(tenant.theme, null, 2)}</pre>
+          <pre>{JSON.stringify(withoutDerivedFavicon(tenant.theme), null, 2)}</pre>
         </div>
       </div>
     </div>
   );
+}
+
+function withoutDerivedFavicon(theme: Record<string, unknown>) {
+  const { faviconUrl: _faviconUrl, ...rest } = theme;
+  return rest;
 }
 
 // Helper to mimic CSS color-mix in JS for the preview
@@ -588,7 +593,3 @@ function RadiusSelect({ label, id, value, onChange, canEdit }: RadiusSelectProps
     </div>
   );
 }
-
-
-
-
