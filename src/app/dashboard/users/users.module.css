@@ -1,0 +1,300 @@
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 4px;
+}
+
+.pageSubtitle {
+  color: var(--dash-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* ─── Filters ────────────────────────────────────────────── */
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.searchWrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dash-text-secondary);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius-input);
+  color: var(--dash-text);
+  font-size: 0.875rem;
+  transition: border-color var(--dash-transition);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--dash-primary);
+}
+
+.filterSelect {
+  padding: 10px 14px;
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius-input);
+  color: var(--dash-text);
+  font-size: 0.875rem;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--dash-primary);
+}
+
+/* ─── Table ──────────────────────────────────────────────── */
+.tableWrap {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius-lg);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dash-text-secondary);
+  border-bottom: 1px solid var(--dash-border);
+  white-space: nowrap;
+}
+
+.table td {
+  text-align: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--dash-border);
+  font-size: 0.875rem;
+  vertical-align: middle;
+}
+
+.table tbody tr {
+  transition: background var(--dash-transition);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: var(--dash-surface-hover);
+}
+
+.userCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.userAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--dash-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  flex-shrink: 0;
+}
+
+.userMeta {
+  text-align: left;
+  min-width: 120px;
+}
+
+.userName {
+  font-weight: 500;
+  color: var(--dash-text);
+}
+
+.userEmail {
+  font-size: 0.75rem;
+  color: var(--dash-text-secondary);
+}
+
+/* ─── Badges ─────────────────────────────────────────────── */
+.roleBadge {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--dash-surface-hover);
+  color: var(--dash-text-secondary);
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.statusBadge {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statusBadge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.statusPending { background: rgba(245, 158, 11, 0.12); color: #fbbf24; }
+.statusPending::before { background: #fbbf24; }
+
+.statusActive { background: rgba(34, 197, 94, 0.12); color: #4ade80; }
+.statusActive::before { background: #4ade80; }
+
+.statusSuspended { background: rgba(239, 68, 68, 0.12); color: #f87171; }
+.statusSuspended::before { background: #f87171; }
+
+.statusRejected { background: rgba(161, 161, 170, 0.12); color: #a1a1aa; }
+.statusRejected::before { background: #a1a1aa; }
+
+.requestCount {
+  font-variant-numeric: tabular-nums;
+}
+
+.dateText {
+  color: var(--dash-text-secondary);
+  font-size: 0.8125rem;
+}
+
+/* ─── Status Select (inline) ─────────────────────────────── */
+.statusSelect {
+  padding: 6px 10px;
+  background: var(--dash-background);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius-input);
+  color: var(--dash-text);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: border-color var(--dash-transition);
+}
+
+.statusSelect:hover {
+  border-color: var(--dash-text-secondary);
+}
+
+.statusSelect:focus {
+  outline: none;
+  border-color: var(--dash-primary);
+}
+
+.statusSelect:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Loading / Empty ────────────────────────────────────── */
+.loadingState,
+.emptyState {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--dash-text-secondary);
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--dash-border);
+  border-top-color: var(--dash-primary);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* ─── Pagination ─────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.pageBtn {
+  padding: 8px 16px;
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
+  color: var(--dash-text);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all var(--dash-transition);
+}
+
+.pageBtn:hover:not(:disabled) {
+  background: var(--dash-surface-hover);
+  border-color: var(--dash-text-secondary);
+}
+
+.pageBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  font-size: 0.8125rem;
+  color: var(--dash-text-secondary);
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .tableWrap {
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 600px;
+  }
+}

@@ -1,0 +1,99 @@
+.card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--dash-text);
+  margin: 0;
+}
+
+.count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--dash-background);
+  color: var(--dash-text-secondary);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--dash-border);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: var(--dash-background);
+  border-radius: var(--dash-radius-sm);
+  border: 1px solid transparent;
+  transition: all var(--dash-transition);
+}
+
+.item:hover {
+  border-color: var(--dash-border);
+  transform: translateX(4px);
+}
+
+.itemMain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.itemTitle {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--dash-text);
+}
+
+.itemUser {
+  font-size: 0.75rem;
+  color: var(--dash-text-secondary);
+}
+
+.itemMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.itemType {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dash-primary);
+  font-weight: 600;
+}
+
+.itemDate {
+  font-size: 0.6875rem;
+  color: var(--dash-text-secondary);
+}
+
+.empty {
+  font-size: 0.8125rem;
+  color: var(--dash-text-secondary);
+  text-align: center;
+  padding: 20px 0;
+}

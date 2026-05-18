@@ -1,0 +1,155 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ─── TENANT (one per client website) ──────────────────────────────
+model Tenant {
+  id     String @id @default(cuid())
+  name   String // Internal name: "Client A"
+  slug   String @unique // Fallback identifier
+  domain String @unique // "portal.client-a.com" — primary lookup key
+
+  // White-label branding
+  pageTitle       String @default("Dashboard")
+  metaDescription String @default("")
+  brand           String?
+  merchant        String?
+
+  // Full theme configuration (JSON)
+  theme Json
+
+  createdAt DateTime @default(now())
+
+  users    User[]
+  requests Request[]
+  accounts Account[]
+  ftdTransactions FtdTransaction[]
+}
+
+// ─── USER ─────────────────────────────────────────────────────────
+model User {
+  id       String @id @default(cuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id])
+
+  email    String
+  password String // bcrypt hashed
+  name     String
+  role     Role   @default(USER)
+  status   Status @default(PENDING)
+  brand    String?
+  merchant String?
+  metadata Json? // Flexible extra data per tenant
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  requests Request[]
+
+  @@unique([tenantId, email])
+}
+
+// ─── REQUEST ──────────────────────────────────────────────────────
+model Request {
+  id       String @id @default(cuid())
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id])
+  userId   String
+  user     User   @relation(fields: [userId], references: [id])
+
+  // Initial user fields
+  req_name    String
+  req_geo     String
+  req_amo     String
+  req_type    String
+  
+  // Admin-assigned fields (optional initially)
+  req_numb    String?
+  req_acc     String?
+
+  status      RequestStatus @default(SUBMITTED)
+  adminNotes  String?
+  fileUrl     String? // For confirmation uploads
+
+  // Workflow Timestamps
+  submittedAt DateTime  @default(now())
+  pendingAt   DateTime?
+  confirmedAt DateTime?
+  completedAt DateTime?
+  cancelledAt DateTime?
+  attachmentApprovedAt DateTime?
+  moneyArrivedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── ENUMS ────────────────────────────────────────────────────────
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum Status {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  REJECTED
+}
+
+enum RequestStatus {
+  SUBMITTED
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+model Account {
+  id        String   @id @default(cuid())
+  name      String
+  number    String
+  address   String?
+  type        String    @default("low")
+  status      String    @default("ACTIVE")
+  inactiveAt  DateTime?
+  
+  tenants     Tenant[]
+  ftdTransactions FtdTransaction[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FtdTransaction {
+  id        String   @id @default(cuid())
+  name      String
+  amount    Float
+  date      DateTime @default(now())
+  settled   Boolean  @default(false)
+  
+  accountId String
+  account   Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  
+  tenantId  String
+  tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

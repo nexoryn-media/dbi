@@ -1,0 +1,78 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius-lg);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all var(--dash-transition);
+  animation: fadeIn 0.3s ease-out both;
+}
+
+.card:nth-child(1) { animation-delay: 0ms; }
+.card:nth-child(2) { animation-delay: 50ms; }
+.card:nth-child(3) { animation-delay: 100ms; }
+.card:nth-child(4) { animation-delay: 150ms; }
+.card:nth-child(5) { animation-delay: 200ms; }
+.card:nth-child(6) { animation-delay: 250ms; }
+
+.card:hover {
+  border-color: var(--dash-text-secondary);
+  box-shadow: var(--dash-shadow-md);
+  transform: translateY(-2px);
+}
+
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--dash-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.card.primary .iconWrap { background: color-mix(in srgb, var(--dash-primary) 15%, transparent); }
+.card.primary .iconDot { background: var(--dash-primary); }
+
+.card.success .iconWrap { background: color-mix(in srgb, var(--dash-success) 15%, transparent); }
+.card.success .iconDot { background: var(--dash-success); }
+
+.card.warning .iconWrap { background: color-mix(in srgb, var(--dash-warning) 15%, transparent); }
+.card.warning .iconDot { background: var(--dash-warning); }
+
+.card.error .iconDot { background: var(--dash-error); }
+
+.card.accent .iconWrap { background: color-mix(in srgb, var(--dash-accent) 15%, transparent); }
+.card.accent .iconDot { background: var(--dash-accent); }
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin-bottom: 4px;
+}
+
+.label {
+  font-size: 0.8125rem;
+  color: var(--dash-text-secondary);
+}

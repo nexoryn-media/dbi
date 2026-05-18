@@ -1,0 +1,223 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  z-index: 1;
+}
+
+/* ─── Decorative Background ──────────────────────────────── */
+.bgOrb1,
+.bgOrb2 {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.bgOrb1 {
+  width: 500px;
+  height: 500px;
+  background: var(--dash-primary);
+  top: -150px;
+  right: -100px;
+}
+
+.bgOrb2 {
+  width: 400px;
+  height: 400px;
+  background: var(--dash-accent);
+  bottom: -100px;
+  left: -100px;
+}
+
+/* ─── Card ───────────────────────────────────────────────── */
+.card {
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius-xl);
+  padding: 40px 36px;
+  box-shadow: var(--dash-shadow-lg);
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logoMark {
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dash-text);
+  margin-bottom: 8px;
+  letter-spacing: -0.025em;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--dash-text-secondary);
+  line-height: 1.5;
+}
+
+/* ─── Error Banner ───────────────────────────────────────── */
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--dash-radius);
+  color: var(--dash-error);
+  font-size: 0.8125rem;
+  margin-bottom: 24px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* ─── Form ───────────────────────────────────────────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--dash-text-secondary);
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--dash-background);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius-input);
+  color: var(--dash-text);
+  font-size: 0.9375rem;
+  transition: border-color var(--dash-transition), box-shadow var(--dash-transition);
+}
+
+.input::placeholder {
+  color: var(--dash-text-secondary);
+  opacity: 0.5;
+}
+
+.input:hover {
+  border-color: var(--dash-text-secondary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--dash-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* ─── Submit Button ──────────────────────────────────────── */
+.submitBtn {
+  width: 100%;
+  padding: 12px 24px;
+  background: var(--dash-primary);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--dash-radius);
+  cursor: pointer;
+  transition: background var(--dash-transition), transform var(--dash-transition), box-shadow var(--dash-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 4px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: var(--dash-primary-hover);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ─── Spinner ────────────────────────────────────────────── */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* ─── Divider ────────────────────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--dash-border);
+}
+
+.divider span {
+  font-size: 0.75rem;
+  color: var(--dash-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Toggle Button ──────────────────────────────────────── */
+.toggleBtn {
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
+  color: var(--dash-text-secondary);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all var(--dash-transition);
+}
+
+.toggleBtn:hover {
+  color: var(--dash-text);
+  border-color: var(--dash-text-secondary);
+  background: var(--dash-surface-hover);
+}

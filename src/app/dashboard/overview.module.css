@@ -1,0 +1,39 @@
+.tenantLinks {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  background: var(--dash-surface);
+  border: 1px solid var(--dash-border);
+  border-radius: var(--dash-radius);
+  flex-wrap: wrap;
+}
+
+.tenantLinksLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dash-text-secondary);
+  white-space: nowrap;
+}
+
+.tenantLink {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--dash-accent);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 2rem;
+  background: color-mix(in srgb, var(--dash-accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--dash-accent) 20%, transparent);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tenantLink:hover {
+  background: color-mix(in srgb, var(--dash-accent) 20%, transparent);
+  border-color: var(--dash-accent);
+  transform: translateY(-1px);
+}

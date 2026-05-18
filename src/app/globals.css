@@ -1,0 +1,148 @@
+/* ─── CSS Reset & Defaults ──────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Theme Variables (defaults — overridden per tenant) ──── */
+:root {
+  --dash-primary: #3b82f6;
+  --dash-primary-hover: #2563eb;
+  --dash-accent: #8b5cf6;
+  --dash-background: #09090b;
+  --dash-surface: #18181b;
+  --dash-surface-hover: #27272a;
+  --dash-text: #fafafa;
+  --dash-text-secondary: #a1a1aa;
+  --dash-border: #27272a;
+  --dash-success: #22c55e;
+  --dash-warning: #f59e0b;
+  --dash-error: #ef4444;
+  --dash-radius: 8px;
+  --dash-radius-lg: 12px;
+  --dash-radius-xl: 16px;
+  --dash-radius-input: 8px;
+  --dash-sidebar-bg: #18181b;
+  --dash-topbar-bg: #09090b;
+  --dash-font: 'Inter', system-ui, -apple-system, sans-serif;
+  --dash-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --dash-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --dash-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --dash-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.4);
+  --dash-transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --dash-statusOPEN: color-mix(in srgb, var(--dash-primary) 15%, transparent);
+  --dash-statusINPROGRESS: color-mix(in srgb, var(--dash-warning) 15%, transparent);
+  --dash-statusRESOLVED: color-mix(in srgb, var(--dash-success) 15%, transparent);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--dash-font);
+  background: var(--dash-background);
+  color: var(--dash-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--dash-primary);
+  text-decoration: none;
+  transition: color var(--dash-transition);
+}
+
+a:hover {
+  color: var(--dash-primary-hover);
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dash-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dash-text-secondary);
+}
+
+/* ─── Focus Styles ──────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--dash-primary);
+  outline-offset: 2px;
+}
+
+/* ─── Selection ─────────────────────────────────────────────── */
+::selection {
+  background: var(--dash-primary);
+  color: #fff;
+}
+
+/* ─── Utility Classes ───────────────────────────────────────── */
+.text-main { color: var(--dash-text); }
+.text-sec { color: var(--dash-text-secondary); }
+.text-primary { color: var(--dash-primary); }
+.text-accent { color: var(--dash-accent); }
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Animations ────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* ─── Form Elements ─────────────────────────────────────────── */
+input, textarea, select {
+  font-family: var(--dash-font);
+  font-size: 0.9375rem;
+}
+
+button {
+  font-family: var(--dash-font);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
