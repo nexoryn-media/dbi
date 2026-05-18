@@ -95,6 +95,7 @@ export default function SettingsPage() {
       const updatedTheme = {
         ...currentTheme,
         logoUrl: formData.logoUrl,
+        faviconUrl: formData.logoUrl,
         brandName: formData.sidebarTitle,
         logoSize: formData.logoSize,
         radiusCard: formData.radiusCard,
@@ -587,7 +588,6 @@ function RadiusSelect({ label, id, value, onChange, canEdit }: RadiusSelectProps
     </div>
   );
 }
-
 
 
 

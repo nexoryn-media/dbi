@@ -14,11 +14,12 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   const theme = resolveTheme(tenant.theme as Record<string, unknown>);
+  const faviconUrl = theme.faviconUrl || theme.logoUrl;
 
   return {
     title: tenant.pageTitle || "Dashboard",
     description: tenant.metaDescription || "",
-    icons: theme.faviconUrl ? { icon: theme.faviconUrl } : undefined,
+    icons: faviconUrl ? { icon: faviconUrl, shortcut: faviconUrl, apple: faviconUrl } : undefined,
   };
 }
 
